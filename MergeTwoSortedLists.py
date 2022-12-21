@@ -17,6 +17,36 @@ list2 = ListNode(1,l21)
 
 
 
+
+#Input: list1 = [], list2 = []
+#Output: []
+LN1, LN2 = None,None
+
+#Input: list1 = [], list2 = [0]
+#Output: [0]
+LL1 , LL2 = None,ListNode(0)
+
+#Input: list1 = [-3,-1,0,5,7], list2 = [-5,1,3,4,6]
+#Output:
+
+
+L14 = ListNode(7)
+L13 = ListNode(5,L14)
+L12 = ListNode(0,L13)
+L11 = ListNode(-1,L12)
+List1 = ListNode(-3,L11)
+
+
+L24 = ListNode(6)
+L23 = ListNode(4,L24)
+L22 = ListNode(3,L23)
+L21 = ListNode(1,L22)
+List2 = ListNode(-5,L21)
+
+
+
+
+
 def printListNode(list:ListNode):
     print(list.val)
     while list.next != None:
@@ -29,19 +59,24 @@ def printListNode(list:ListNode):
 class Solution:
     def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
         #We will link them in-place on list1
-        if list1.val <= list2.val:
-            self.head = list1
-            self.pointer_previous = list1
-            self.inplace = list1.next
-            self.otherlist = list2
-            self.pointer_next = None
-        else:
-            self.head = list2
-            self.pointer_previous = list2
-            self.inplace = list2.next
-            self.otherlist = list1
-            self.pointer_next = None
-
+        try:
+            if list1.val <= list2.val:
+                self.head = list1
+                self.pointer_previous = list1
+                self.inplace = list1.next
+                self.otherlist = list2
+                self.pointer_next = None
+            else:
+                self.head = list2
+                self.pointer_previous = list2
+                self.inplace = list2.next
+                self.otherlist = list1
+                self.pointer_next = None
+        except AttributeError:
+            if list1 is None:
+                return list2
+            else:
+                return list1
 
 
         while self.inplace.next is not None or self.otherlist.next is not None:
@@ -66,4 +101,8 @@ class Solution:
 #printListNode(list2)
 S = Solution()
 
-printListNode(S.mergeTwoLists(list1,list2))
+#printListNode(S.mergeTwoLists(list1,list2))
+#print(S.mergeTwoLists(LN1,LN2))
+#printListNode(S.mergeTwoLists(LL1,LL2))
+output = S.mergeTwoLists(List1,List2)
+printListNode(output)
