@@ -48,10 +48,12 @@ List2 = ListNode(-5,L21)
 
 
 def printListNode(list:ListNode):
-    print(list.val)
+    A = []
     while list.next != None:
+        A.append(list.val)
         list = list.next
-        print(list.val)
+    print(A)
+
 
 
 
@@ -88,6 +90,7 @@ class Solution:
                 self.pointer_previous.next = self.otherlist
                 self.otherlist.next = self.inplace
                 self.otherlist = self.pointer_next
+                self.pointer_previous = self.pointer_previous.next
 
         if self.inplace.next is None:
             self.inplace.next = self.otherlist
