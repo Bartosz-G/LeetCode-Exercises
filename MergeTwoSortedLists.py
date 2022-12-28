@@ -44,12 +44,18 @@ L21 = ListNode(1,L22)
 List2 = ListNode(-5,L21)
 
 
+#list1 = [2] list2 = [1]
+n1 = ListNode(-9)
+N1 = ListNode(3,n1)
+n2 = ListNode(5)
+N2 = ListNode(7,n2)
+
 
 
 
 def printListNode(list:ListNode):
     A = []
-    while list.next != None:
+    while list != None:
         A.append(list.val)
         list = list.next
     print(A)
@@ -65,13 +71,21 @@ class Solution:
             if list1.val <= list2.val:
                 self.head = list1
                 self.pointer_previous = list1
-                self.inplace = list1.next
+
+                if list1.next is not None:
+                    self.inplace = list1.next
+                else:
+                    self.inplace = list1
+
                 self.otherlist = list2
                 self.pointer_next = None
             else:
                 self.head = list2
                 self.pointer_previous = list2
-                self.inplace = list2.next
+                if list2.next is not None:
+                    self.inplace = list2.next
+                else:
+                    self.inplace = list2
                 self.otherlist = list1
                 self.pointer_next = None
         except AttributeError:
@@ -104,8 +118,9 @@ class Solution:
 #printListNode(list2)
 S = Solution()
 
-#printListNode(S.mergeTwoLists(list1,list2))
-#print(S.mergeTwoLists(LN1,LN2))
-#printListNode(S.mergeTwoLists(LL1,LL2))
+printListNode(S.mergeTwoLists(list1,list2))
+print(S.mergeTwoLists(LN1,LN2))
+printListNode(S.mergeTwoLists(LL1,LL2))
 output = S.mergeTwoLists(List1,List2)
 printListNode(output)
+printListNode(S.mergeTwoLists(N1,N2))
