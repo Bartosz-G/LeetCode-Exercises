@@ -1,9 +1,5 @@
 #https://leetcode.com/problems/combine-two-tables/description/
 
-SELECT Person.firstName, Person.lastName, Address.city, Address.state
-FROM Person
-LEFT JOIN Address ON Person.personId=Address.personId
-UNION
-SELECT Person.firstName, Person.lastName, Address.city, Address.state
-FROM Address
-RIGHT JOIN Person ON Person.personId=Address.personId;
+SELECT P.firstName, P.lastName, A.city, A.state
+FROM Person P
+LEFT JOIN Address A USING (personId)
