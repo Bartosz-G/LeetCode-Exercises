@@ -17,10 +17,17 @@ def MakeALinkedList(List:list) -> ListNode:
     return current
 
 
-def PrintLinkedList(List:list):
+def PrintLinkedList(node):
     A = []
-    while List is not None:
-        A.append(List.val)
-        List = List.next
+    while node is not None:
+        A.append(node.val)
+        node = node.next
     print(A)
+
+def _PrintLinkedList(node):
+    A = []
+    while node is not None:
+        A.append(node.val)
+        node = node.next
+    return A
 
