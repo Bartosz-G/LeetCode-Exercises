@@ -8,22 +8,14 @@
  * @return {number}
  */
 var lengthOfLastWord = function(s) {
-    let rs = s.split("").reverse().join("");
-    let len = 0;
-    let spaces = 0;
-    for (let lt of rs) {
-        if (lt !== " ") {
-            break;
-        } else {
-            spaces++;
-        }
+    s = s.trim();
+
+    let last = s.lastIndexOf(" ");
+
+    if (last === -1) {
+        return s.length;
     }
-    for (i = spaces; i<rs.length; i++) {
-        if (rs[i] !== " ") {
-            len++;
-        } else {
-            break;
-        }
-    }
-    return len;
+
+    return s.length - last - 1;
+
 };
